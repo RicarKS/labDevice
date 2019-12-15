@@ -1,4 +1,4 @@
-package 实验室电器控制器;
+package LabDeviceController;
 
 public class Teacher implements User{
 

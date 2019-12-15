@@ -1,4 +1,4 @@
-package 实验室电器控制器;
+package LabDeviceController;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,6 +28,7 @@ public class ControllerGUI extends JPanel{
 	private JSplitPane bigSplitPane, upSplitPane;
 	private JPanel  downPanel, upperLeftPanel, geoDataPanel;
 	private JComboBox cmbUser;
+	
 	
 	private JTextField txtTeacherName;
 	private JTextField txtTime;
