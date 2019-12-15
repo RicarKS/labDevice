@@ -1,5 +1,9 @@
 package LabDeviceController;
+///<<<<<<< HEAD:src/LabDeviceController/ControllerGUI.java
 
+//=======
+//寰愭稕
+//>>>>>>> df9cdf809de689250432920b5712ebbe682d465b:src/瀹為獙瀹ょ數鍣ㄦ帶鍒跺櫒/ControllerGUI.java
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -133,7 +137,7 @@ public class ControllerGUI extends JPanel{
 	}
 	private static void createAndShowGUI() {
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		JFrame frame = new JFrame("实验室电器控制器");
+		JFrame frame = new JFrame("瀹為獙瀹ょ數鍣ㄦ帶鍒跺櫒");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ControllerGUI newContentPane = new ControllerGUI();
 		newContentPane.setOpaque(true);
@@ -185,9 +189,9 @@ public class ControllerGUI extends JPanel{
 		JPanel typePanel = new JPanel();
 
 		if (type.equals(TEACHER)) {
-			JLabel lblTeacherName = new JLabel("教师姓名");
-			JLabel lblTime = new JLabel("到达时间");
-			JLabel lblClassRoom = new JLabel("实验教室");
+			JLabel lblTeacherName = new JLabel("鏁欏笀濮撳悕");
+			JLabel lblTime = new JLabel("鍒拌揪鏃堕棿");
+			JLabel lblClassRoom = new JLabel("瀹為獙鏁欏");
 			txtTeacherName = new JTextField(8);
 			txtTime = new JTextField(8);
 			txtClassRoom = new JTextField(8);

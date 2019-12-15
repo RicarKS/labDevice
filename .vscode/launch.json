@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ControllerGUI",
+            "request": "launch",
+            "mainClass": "LabDeviceController.ControllerGUI",
+            "projectName": "labDevice_295eb9df"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ControllerGUI",
+            "request": "launch",
+            "mainClass": "ʵ.ControllerGUI"
+        }
+    ]
+}
