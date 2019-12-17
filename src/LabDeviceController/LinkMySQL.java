@@ -46,17 +46,18 @@ public class LinkMySQL {
 	public void setRs(ResultSet rs) {
 		this.rs = rs;
 	}
-	public String judgeInformation() {
+	public ResultSet selectTeacher() {
 		rs=null;
 		String date=null;
 		String queryStr="select * from classschdule";
+		Statement stmt;
 		try {
-			Statement stmt = con.createStatement();
-		    rs = stmt.executeQuery(queryStr);
-		    String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(rs.getTimestamp("insert_dt"));
-		    while( rs.next() ) {
-		    	
-		    }
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(queryStr);
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
 		}
+		return rs;
 	}
 }
