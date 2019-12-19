@@ -60,4 +60,14 @@ public class LinkMySQL {
 		}
 		return rs;
 	}
+	public void updateEquipment(String s, String devicesType) {
+		String sql="update equipment set status='" + s + "' where deviceType='" + devicesType + "'";
+		try {
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+	}
 }

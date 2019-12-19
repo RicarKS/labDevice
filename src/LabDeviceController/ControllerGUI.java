@@ -17,6 +17,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -49,7 +51,7 @@ public class ControllerGUI extends JPanel implements ItemListener {
 	public final int DESELECTED = ItemEvent.DESELECTED;
 	private static final String[] OPTION = { "Open", "Close" };
 	private JComboBox[] optComoBox = new JComboBox[11];
-	private int[] ckBoxStates;
+	private int[] ckBoxStates = new int[numCheckBox];
 	public static final String COMPUTE = "Submit";
 	public static final String EXIT = "Exit";
 	public static final String TEACHER = "teacher";
@@ -193,6 +195,7 @@ public class ControllerGUI extends JPanel implements ItemListener {
 		public void actionPerformed(ActionEvent e) {
 			selection = getUserType();
 			User user = null;
+			// createSwitch(e);
 
 			if (e.getActionCommand().equals(EXIT)) {
 				System.exit(1);
@@ -218,7 +221,7 @@ public class ControllerGUI extends JPanel implements ItemListener {
 					String cr = String.valueOf(classRoom);
 
 					user = new Teacher(tn, dateStr, cr);
-					
+
 					if (user.judge()) {
 						for (int m = 0; m < numCheckBox; m++) {
 							equCheckBox[m].setEnabled(true);
@@ -227,6 +230,10 @@ public class ControllerGUI extends JPanel implements ItemListener {
 							optComoBox[i].setEnabled(true);
 						}
 						txtEquipmentDisplay.append("欢迎来到本实验室");
+						HashMap<String, String> status = getSeletedAndStatus();
+						Monitor monitor = new Monitor(status);
+						String t = monitor.monitor();
+						txtEquipmentDisplay.append(t);
 					} else {
 						txtEquipmentDisplay.append(date + "无权使用该实验室");
 					}
@@ -333,23 +340,118 @@ public class ControllerGUI extends JPanel implements ItemListener {
 		}
 	}
 
+	public HashMap<String, String> getSeletedAndStatus() {
+		HashMap<String, String> status = new HashMap<String, String>();
+		
+		for (int i = 0; i < numCheckBox; i++) {
+			if (ckBoxStates[i] == SELECTED) {
+				status.put(equCheckBox[i].getText(), (String) optComoBox[i].getSelectedItem());
+			}
+		}
+
+		return status;
+	}
+
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// TODO 自动生成的方法存根
 		Object source = e.getItemSelectable();
 		int state = e.getStateChange();
 
-		if (source == equCheckBox[0])
-			ckBoxStates[0] = state;
-		else if (source == equCheckBox[1])
-			ckBoxStates[1] = state;
-		else if (source == equCheckBox[2])
-			ckBoxStates[2] = state;
-		else if (source == equCheckBox[3])
-			ckBoxStates[3] = state;
-		else if (source == equCheckBox[4])
-			ckBoxStates[4] = state;
-		else if (source == equCheckBox[5])
-			ckBoxStates[5] = state;
+	
+			if (source == equCheckBox[0]) {
+				if (state == SELECTED) {
+					equCheckBox[0].setSelected(true);
+					ckBoxStates[0] = state;
+				} else if (state == DESELECTED) {
+					equCheckBox[0].setSelected(false);
+				}
+				
+			}
+			else if(source == equCheckBox[1]) {
+				if (state == SELECTED) {
+					equCheckBox[1].setSelected(true);
+					ckBoxStates[1] = state;
+				} else if (state == DESELECTED) {
+					equCheckBox[1].setSelected(false);
+				}
+				
+			}
+			else if(source == equCheckBox[2]) {
+				if (state == SELECTED) {
+					equCheckBox[2].setSelected(true);
+					ckBoxStates[2] = state;
+				} else if (state == DESELECTED) {
+					equCheckBox[2].setSelected(false);
+				}
+				
+			}else if(source == equCheckBox[3]) {
+				if (state == SELECTED) {
+					equCheckBox[3].setSelected(true);
+					ckBoxStates[3] = state;
+				} else if (state == DESELECTED) {
+					equCheckBox[3].setSelected(false);
+				}
+				
+			}else if(source == equCheckBox[4]) {
+				if (state == SELECTED) {
+					equCheckBox[4].setSelected(true);
+					ckBoxStates[4] = state;
+				} else if (state == DESELECTED) {
+					equCheckBox[4].setSelected(false);
+				}
+				
+			}else if(source == equCheckBox[5]) {
+				if (state == SELECTED) {
+					equCheckBox[5].setSelected(true);
+					ckBoxStates[5] = state;
+				} else if (state == DESELECTED) {
+					equCheckBox[5].setSelected(false);
+				}
+				
+			}
+	}
+
+	private void createSwitch(ActionEvent e) {
+		// TODO 自动生成的方法存根
+		boolean isOpen = false;
+		boolean isClose = false;
+
+		if (e.getActionCommand().equals(COMPUTE)) {
+			for (int m = 0; m < numCheckBox; m++) {
+				if ((m == 0) && (ckBoxStates[0] == SELECTED)) {
+					if (optComoBox[0].getSelectedItem().equals("Open"))
+						isOpen = true;
+					else if (optComoBox[0].getSelectedItem().equals("Close"))
+						isClose = true;
+				}
+				if ((m == 1) && (ckBoxStates[1] == SELECTED)) {
+					if (optComoBox[1].getSelectedItem().equals("Open"))
+						isOpen = true;
+					else if (optComoBox[1].getSelectedItem().equals("Close"))
+						isClose = true;
+				}if ((m == 2) && (ckBoxStates[2] == SELECTED)) {
+					if (optComoBox[2].getSelectedItem().equals("Open"))
+						isOpen = true;
+					else if (optComoBox[2].getSelectedItem().equals("Close"))
+						isClose = true;
+				}if ((m == 3) && (ckBoxStates[3] == SELECTED)) {
+					if (optComoBox[3].getSelectedItem().equals("Open"))
+						isOpen = true;
+					else if (optComoBox[3].getSelectedItem().equals("Close"))
+						isClose = true;
+				}if ((m == 4) && (ckBoxStates[4] == SELECTED)) {
+					if (optComoBox[4].getSelectedItem().equals("Open"))
+						isOpen = true;
+					else if (optComoBox[4].getSelectedItem().equals("Close"))
+						isClose = true;
+				}if ((m == 5) && (ckBoxStates[5] == SELECTED)) {
+					if (optComoBox[5].getSelectedItem().equals("Open"))
+						isOpen = true;
+					else if (optComoBox[5].getSelectedItem().equals("Close"))
+						isClose = true;
+				}
+			}
+		}
 	}
 }
